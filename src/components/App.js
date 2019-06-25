@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
 import Flights from './flights';
+import FlightService from './flightService'
 
 class App extends Component {
 
-  state = {
-    flights: []
+  constructor(props) {
+    super(props);
+    this.flightService = new FlightService();
+    this.state = {
+    }
   }
 
   componentDidMount() {
-    fetch('http://flight-api/v0/flights', { mode: 'cors' })
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({ flights: data })
-      })
-      .catch(console.log)
+    this.getFlights()
+    // this.timer = setInterval(() => this.getFlights(), 2000);
+  }
+
+  componentWillUnmount() {
+    //  this.timer = null;
   }
 
   render() {
+    const flights = this.state.flights;
+    if (!flights) return null;
     return (
-      <Flights flights={this.state.flights} />
+      <Flights flights={this.state.flights} app={this} />
     );
+  }
+
+  getFlights() {
+    this.flightService.retrieveFlights().then(flights => {
+      this.setState({ flights: flights });
+    });
+  }
+
+  deleteFlight(callsign) {
+    this.clearState();
+    this.flightService.deleteFlight(callsign).then(flight => { this.getFlights() })
+  }
+
+  clearState() {
+    this.setState({});
   }
 }
 
