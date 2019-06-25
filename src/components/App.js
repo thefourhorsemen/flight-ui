@@ -13,11 +13,11 @@ class App extends Component {
 
   componentDidMount() {
     this.getFlights()
-    // this.timer = setInterval(() => this.getFlights(), 2000);
+    this.timer = setInterval(() => this.getFlights(), 2000);
   }
 
   componentWillUnmount() {
-    //  this.timer = null;
+    this.timer = null;
   }
 
   render() {
