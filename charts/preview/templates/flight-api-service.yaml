@@ -7,4 +7,3 @@ spec:
   externalName: flight-api.jx-staging.svc.cluster.local
   ports:
   - port: 80
-view raw
