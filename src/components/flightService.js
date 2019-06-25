@@ -1,7 +1,7 @@
 class FlightService {
 
     async retrieveFlights() {
-        return fetch('http://flight-api/v0/flights')
+        return fetch('http://flight-api/v0/flights', { mode: "cors" })
             .then(res => res.json())
             .then((data) => {
                 console.log("Retrieved items:");
