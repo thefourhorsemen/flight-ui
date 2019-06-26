@@ -1,7 +1,7 @@
 class FlightService {
 
     async retrieveFlights() {
-        return fetch("http://" + process.env.REACT_APP_FLIGHT_API_HOSTNAME + "/v0/flights", { mode: "cors" })
+        return fetch(process.env.REACT_APP_FLIGHT_API_URL + "/v0/flights", { mode: "cors" })
             .then(res => res.json())
             .then((data) => {
                 console.log("Retrieved items:");

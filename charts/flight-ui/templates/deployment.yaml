@@ -24,8 +24,19 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
-        - name: FLIGHT_API_HOSTNAME
-          value: flight-api.{{ template "apinamespace" . }}.{{ .Values.api.ingressSuffix }}
+        - name: FLIGHT_UI_URL
+          valueFrom:
+            configMapKeyRef:
+            {{- if .Values.service.name }}
+              name: {{ .Values.service.name }}
+            {{- else }}
+              name: {{ template "fullname" . }}
+            {{- end }}
+              key: service.url
+        - name: FLIGHT_UI_NAMESPACE
+          value: {{ .Release.Namespace }}
+        - name: FLIGHT_API_NAMESPACE
+          value: {{ template "apinamespace" . }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
