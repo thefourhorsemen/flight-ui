@@ -20,5 +20,4 @@ preview:
     repository:
     tag:
     pullPolicy: IfNotPresent
-  api:
-    Namespace: jx-staging
+  apiNamespace: jx-staging
