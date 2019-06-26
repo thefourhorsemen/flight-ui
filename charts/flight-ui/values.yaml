@@ -20,7 +20,7 @@ service:
   internalPort: 8080
   annotations:
     fabric8.io/expose: "true"
-    fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx\nkubernetes.io/enable-cors: "true"'
+    fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx\nnginx.ingress.kubernetes.io/enable-cors: "true"'
 resources:
   limits:
     cpu: 300m
@@ -38,3 +38,7 @@ readinessProbe:
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 1
+
+# wouldn't do that for real....
+api:
+  ingressSuffix: 40.115.8.15.nip.io
