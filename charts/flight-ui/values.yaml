@@ -20,7 +20,8 @@ service:
   internalPort: 8080
   annotations:
     fabric8.io/expose: "true"
-    fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx\nnginx.ingress.kubernetes.io/enable-cors: "true"'
+    fabric8.io/exposeHostNameAs: debug/ingressHostname
+    fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: 'nginx'\nnginx.ingress.kubernetes.io/enable-cors: 'true'"
 resources:
   limits:
     cpu: 300m
