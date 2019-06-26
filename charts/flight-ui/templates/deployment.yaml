@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: FLIGHT_API_HOSTNAME
-          value: flight-api.{{ template apinamespace }}.{{ .Values.ingress.suffix }}
+          value: flight-api.{{ template "apinamespace" . }}.{{ .Values.api.ingressSuffix }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:

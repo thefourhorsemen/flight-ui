@@ -18,6 +18,6 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{/*
 Create the namespace of the API service. Most likely staging for previews and staging/prod for non ephemeral deployments.
 */}}
-{{- define "apinamepsace" -}}
+{{- define "apinamespace" -}}
 {{- default .Release.Namespace .Values.api.Namespace }}
 {{- end -}}
