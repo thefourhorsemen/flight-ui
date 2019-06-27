@@ -20,4 +20,9 @@ preview:
     repository:
     tag:
     pullPolicy: IfNotPresent
-  apiNamespace: jx-staging
+  # uncomment next line if you want to depend on an other environment API, comment it if you want a full deploy
+  # apiNamespace: jx-staging
+  
+tags:
+  # set to true if you want a full deployment of processing/db/api, false if you want to rely on an existing environment 
+  full-deploy: true
