@@ -8,7 +8,7 @@ class FlightService {
 
     async deleteFlight(callsign) {
         console.log("FlightService.deleteFlight(): " + callsign);
-        return fetch(process.env.REACT_APP_FLIGHT_API_URL + 'ttt/v0/flights/' + callsign, {
+        return fetch(process.env.REACT_APP_FLIGHT_API_URL + '/v0/flights/' + callsign, {
             method: "DELETE",
             mode: "cors"
         }).catch(console.log)
