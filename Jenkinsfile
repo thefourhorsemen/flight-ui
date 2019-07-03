@@ -1,10 +1,10 @@
 pipeline {
   agent any
   environment {
-    ORG = 'garmon-bozia'
+    ORG = 'thefourhorsemen'
     APP_NAME = 'flight-ui'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
-    DOCKER_REGISTRY_ORG = 'garmon-bozia'
+    DOCKER_REGISTRY_ORG = 'thefourhorsemen'
   }
   stages {
     stage('CI Build and push snapshot') {
@@ -33,7 +33,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        git 'https://github.com/garmon-bozia/flight-ui.git'
+        git 'https://github.com/thefourhorsemen/flight-ui.git'
 
         // so we can retrieve the version in later steps
         sh "echo \$(jx-release-version) > VERSION"
