@@ -23,18 +23,18 @@ service:
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx\nnginx.ingress.kubernetes.io/enable-cors: true"
 resources:
   limits:
-    cpu: 300m
+    cpu: 100m
     memory: 256Mi
   requests:
-    cpu: 300m
+    cpu: 100m
     memory: 128Mi
 probePath: /
 livenessProbe:
-  initialDelaySeconds: 60
-  periodSeconds: 10
+  initialDelaySeconds: 600
+  periodSeconds: 30
   successThreshold: 1
-  timeoutSeconds: 1
+  timeoutSeconds: 20
 readinessProbe:
-  periodSeconds: 10
+  periodSeconds: 30
   successThreshold: 1
-  timeoutSeconds: 1
+  timeoutSeconds: 20
